@@ -4,33 +4,95 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Laboratorio HTML</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <title>Ingresos y Egresos</title>
+    
   </head>
-  <body>
-    <p>Dennis Chamba, esto es un parrafo <strong>hola</strong></p>
-    <em>primero</em><br /><em>segundo</em><br /><em>tercero</em>
+  <body onload="cargarApp()">
+    <div class="cabecero">
+      <div class="presupuesto">
+        <div class="presupuesto_titulo">
+          Presupuesto disponible
+        </div>
+        <div class="presupuesto_valor" id="presupuesto">654</div>
+        <div class="presupuesto_ingreso limpiarEstilos">
+          <div class="presupuesto_ingreso--texto">Ingresos</div>
+          <div class="derecha">
+            <div class="presupuesto_ingreso--valor" id="ingresos">+4000</div>
+            <div class="presupuesto_ingreso--porcentaje"> </div>
+          </div>
+        </div>
+        <div class="presupuesto_egreso limpiarEstilos">
+          <div class="presupuesto_egreso--texto">Egresos</div>
+          <div class="derecha limpiarEstilos">
+            <div class="presupuesto_egreso--valor" id="egresos">-19,000</div>
+            <div class="presupuesto_egreso--porcentaje" id="porcentaje">45%</div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <p>cuarto</p>
-    <p>quinto</p>
-    <p>sexto</p>
-    <img
-      src="https://raw.githubusercontent.com/mdn/beginner-html-site/gh-pages/images/firefox-icon.png"
-    />
-    <a
-      href="https://www.epn.edu.ec/"
-      title="la paguina de la poli"
-      target="_blank"
-      >sitio web epn</a
-    >
-    <!-- el uso del atributo deshabilitado evita que el usuario final introduzca texto en el cuadro de entrada -->
-    <input type="text" disabled="disabled" value="FIS" />
+    <form id="forma" onsubmit="return false">
+      <div class="agregar">
+        <div class="agregar_contenedor">
+          <select class="agregar_tipo" id="tipo">
+            <option value="ingreso" selected>+</option>
+            <option value="egreso" >-</option>
+          </select>
+          <input type="text" placeholder="Agregar descripcion" id="descripcion" class="agregar_descripcion">
+          <input type="number" class="agregar_valor" placeholder="Valor" id="valor" step="any">
+          <button class="agregar_btn" onclick="agregarDato()">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+    </form>
 
-    <!-- se permite la entrada de texto, ya que no contiene el atributo deshabilitado -->
-    <input type="text" />
 
-    <p>No soy un comentario</p>
+    <div class="contenedor limpiarEstilos">
+      <div class="ingreso">
+        <h2 class="ingreso_titulo"> Ingresos</h2>
+        <div id="lista-ingresos">
+          <div class="elemento limpiarEstilos">
+            <div class="elemento_descripcion"></div>
+            <div class="derecha limpiarEstilos">
+              <div class="elemento_valor"></div>
+              <div class="elemento_eliminar">
+                <button class="elemento_eliminar--btn">
+                  <ion-icon name="close-circle-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <!-- <p>¡Yo sí!</p> -->
+      <div class="egreso">
+        <h2 class="egreso_titulo">Egresos</h2>
+        <div id="lista-egresos">
+          <div class="elemento limpiarEstilos">
+            <div class="elemento_descripcion"></div>
+            <div class="derecha limpiarEstilos">
+              <div class="elemento_valor"></div>
+              <div class="elemento_porcentaje"></div>
+              <div class="elemento_eliminar">
+                <button class="elemento_eliminar--btn">
+                  <ion-icon name="close-circle-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+
+    <script src="js/Dato.js"></script>
+    <script src="js/Ingreso.js"></script>
+    <script src="js/Egreso.js"></script>
+    <script src="js/app.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   </body>
 </html>
